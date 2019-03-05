@@ -1,34 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatMenuModule,
-  MatToolbarModule,
-  MatIconModule,
-} from '@angular/material';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { TemplateComponent } from './components/template/template.component';
+import { DataComponent } from './components/data/data.component';
+import { FormsModule } from '@angular/forms';
 
 
-@NgModule({
+@NgModule ({
 
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    TemplateComponent,
+    DataComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule
+    BrowserAnimationsModule
     ],
-  providers: [],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 
 
 
 export class AppModule { }
+
+
+
+
+
 
 
