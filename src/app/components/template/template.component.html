@@ -5,11 +5,11 @@
     <hr class="my-4">
 
     <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
-        <div class="form-row">
+        <div class="form-row" [ngClass]="{ 'has-danger': (nombre.errors?.required || nombre.errors?.minlenght) && nombre.touched}">
             <div class="form-group col-md-6">
                 <label for="name">Nombre</label>
                 <input type="text" class="form-control" name="nombre" [(ngModel)]="usuario.name" minlength="4" maxlength="30" #nombre="ngModel" required>
-                <div *ngIf="nombre.errors?.required"> X </div>
+                <div *ngIf="nombre.errors?.required" class="form-control-feedback"> Importante </div>
                 <div *ngIf="nombre.errors?.minlenght">Por lo menos {{ nombre.errors.minlenght.requiredLenght }}caracteres, hija! </div>
             </div>
             <div class="form-group col-md-6">
@@ -42,16 +42,14 @@
             <div class="form-group col-md-4">
                 <label for="state">Delegación</label>
                 <select name="delegation" [(ngModel)]='usuario.delegation' class="form-control">
-            <option selected>...</option>
-            <option>...</option>
-            <option>Miguel Hidalgo</option>
-            <option>Coyoacán</option>
-            <option>Tlalpan</option>
+            <option value="">...</option>
+            <option *ngFor="let delegation of delegation" [value]="delegation.codigo"> {{ delegation.nombre }} </option>
+           
           </select>
             </div>
             <div class="form-group col-md-2">
                 <label for="cp">C.P.</label>
-                <input type="number" class="form-control" name="zip" [(ngModel)]='usuario.zip' required>
+                <input type="zip" class="form-control" name="zip" [(ngModel)]='usuario.zip' required minlenght='5' maxlength="5">
             </div>
         </div>
         <div class="input-group">
@@ -74,7 +72,7 @@
 
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col-md-8">
-            <button type="submit" class="btn btn-outline-primary">
+            <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
             Enviar
           </button>
         </div>
@@ -82,4 +80,5 @@
 
 
     </form>
+
 </div>

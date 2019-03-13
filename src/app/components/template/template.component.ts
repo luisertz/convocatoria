@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './template.component.html',
   styles: [`
   .ng-invalid.ng-touched:not(form) {
-      border: 1px solid red;
+      border: 2px solid red;
   }
   `
   ]
@@ -28,6 +28,56 @@ usuario: Object = {
 
 
 };
+
+delegation = [{
+  codigo: 'AO',
+  nombre: 'Álvaro Obregón',
+} , {
+  codigo: 'AZC',
+  nombre: 'Azcapotzalco'
+}, {
+  codigo: 'BJ',
+  nombre: 'Benito Juárez'
+} , {
+  codigo: 'COY',
+  nombre: 'Coyoacán'
+} , {
+  codigo: 'CUAJ',
+  nombre: 'Cuajimalpa de Morelos'
+} , {
+  codigo: 'CUA',
+  nombre: 'Cuauhtémoc'
+} , {
+  codigo: 'GAM',
+  nombre: 'Gustavo A. Madero'
+} , {
+  codigo: 'IZT',
+  nombre: 'Iztacalco'
+} , {
+  codigo: 'IZTA',
+  nombre: 'Iztapalapa'
+} , {
+  codigo: 'MAC',
+  nombre: 'Magdalena Contreras'
+} , {
+  codigo: 'MH',
+  nombre: 'Miguel Hidalgo'
+} , {
+  codigo: 'MIA',
+  nombre: 'Milpa Alta'
+} , {
+  codigo: 'TLA',
+  nombre: 'Tláhuac'
+} , {
+  codigo: 'TLP',
+  nombre: 'Tlalpan'
+} , {
+  codigo: 'VEC', 
+  nombre: 'Venustiano Carranza'
+} , {
+  codigo: 'XOC',
+  nombre: 'Xochimilco'
+}];
 
   constructor() { }
 
