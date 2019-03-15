@@ -24,7 +24,8 @@ usuario: Object = {
   phone: null,
   address: null,
   delegation: null,
-  zip: null
+  zip: null,
+  sexo: ''
 
 
 };
@@ -72,12 +73,15 @@ delegation = [{
   codigo: 'TLP',
   nombre: 'Tlalpan'
 } , {
-  codigo: 'VEC', 
+  codigo: 'VEC',
   nombre: 'Venustiano Carranza'
 } , {
   codigo: 'XOC',
   nombre: 'Xochimilco'
 }];
+
+sexos: string [] = ['Hombre',
+          'Mujer'];
 
   constructor() { }
 

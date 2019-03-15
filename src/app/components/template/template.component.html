@@ -9,16 +9,32 @@
             <div class="form-group col-md-6">
                 <label for="name">Nombre</label>
                 <input type="text" class="form-control" name="nombre" [(ngModel)]="usuario.name" minlength="4" maxlength="30" #nombre="ngModel" required>
-                <div *ngIf="nombre.errors?.required" class="form-control-feedback"> Importante </div>
+                <div *ngIf="nombre.errors?.required" class="form-control-feedback"> Requerido </div>
                 <div *ngIf="nombre.errors?.minlenght">Por lo menos {{ nombre.errors.minlenght.requiredLenght }}caracteres, hija! </div>
             </div>
             <div class="form-group col-md-6">
                 <label for="lastname">Apellidos</label>
                 <input type="lastname" class="form-control" name="apellidos" [(ngModel)]='usuario.lastname' #apellido="ngModel" minlength="3" maxlength="30" placeholder="..." required>
-                <div *ngIf="apellido.errors?.required"> X </div>
+                <div *ngIf="apellido.errors?.required"> Requerido </div>
 
             </div>
         </div>
+
+        <div class=form-row>
+            <label class="col-1 col-form-label">Sexo</label>
+            <div class="col-md-2">
+                <div>
+                    <label *ngFor="let s of sexos" class="custom-control custom-radio">
+                    <input [(ngModel)]="usuario.sexo" name="sexo" [value]="s" type="radio" class="custom-control-input" required>
+                    <span class="custom-control-label"> {{ s }} </span>
+                  </label>
+                </div>
+            </div>
+        </div>
+        <p>
+
+        </p>
+
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="mail">Correo Electronico</label>
@@ -41,7 +57,7 @@
 
             <div class="form-group col-md-4">
                 <label for="state">Delegación</label>
-                <select name="delegation" [(ngModel)]='usuario.delegation' class="form-control">
+                <select name="delegation" [(ngModel)]='usuario.delegation' class="form-control" required>
             <option value="">...</option>
             <option *ngFor="let delegation of delegation" [value]="delegation.codigo"> {{ delegation.nombre }} </option>
            
@@ -52,6 +68,7 @@
                 <input type="zip" class="form-control" name="zip" [(ngModel)]='usuario.zip' required minlenght='5' maxlength="5">
             </div>
         </div>
+
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupFileAddon01">Archivo de Audio<i class="fa fa-audio-description" aria-hidden="true"></i></span>
@@ -61,7 +78,7 @@
                 <p>
 
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <input type="file" class="custom-file-input" id="audio" aria-describedby="inputGroupFileAddon01">
                         <label class="custom-file-label" for="inputGroupFile01">MP3 / WAV </label>
                     </div>
         </div>
@@ -81,4 +98,11 @@
 
     </form>
 
-</div>
+   
+<pre>
+
+    {{ usuario | json }}
+
+</pre>    
+
+  

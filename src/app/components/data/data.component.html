@@ -1,3 +1,82 @@
-<p>
-  data works!
-</p>
+<div class="jumbotron">
+    <h1 class="display-4">Rellena con tus datos</h1>
+    <p class="lead">No olvides subir tu Demo y si eres de los elegidos nos pondremos en contacto contigo</p>
+
+    <hr class="my-4">
+
+    <form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate="novalidate">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" minlength="4" maxlength="30" formControlName="nombre" required>
+               </div>
+            <div class="form-group col-md-6">
+                <label for="lastname">Apellidos</label>
+                <input type="lastname" class="form-control"  minlength="3" maxlength="30" formControlName="apellidos" placeholder="..." required>
+              </div>
+        </div>
+
+        <p>
+
+        </p>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="mail">Correo Electronico</label>
+                <input type="email" class="form-control" placeholder="@" formControlName="Correo Electronico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+               
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone">Teléfono directo</label>
+                <input type="phone" class="form-control" required placeholder="+52" formControlName="Telefono Directo">
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <label for="address">Dirección</label>
+            <input type="text" class="form-control" required placeholder="1234 Main St" formControlName="Direccion">
+        </div>
+
+        <div class="form-row">
+
+         <div class="form-group col-md-2">
+                <label for="cp">C.P.</label>
+                <input type="zip" class="form-control" required minlenght='5' maxlength="5" formControlName="C.P.">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Archivo de Audio<i class="fa fa-audio-description" aria-hidden="true"></i></span>
+            </div>
+
+            <p>
+                <p>
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="audio" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">MP3 / WAV </label>
+                    </div>
+        </div>
+
+        <p>
+
+        </p>
+
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
+            Enviar
+          </button>
+        </div>
+
+
+
+    </form>
+
+    <pre>
+
+    {{ usuario | json }}
+
+</pre>
