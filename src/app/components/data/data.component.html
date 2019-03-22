@@ -1,50 +1,113 @@
 <div class="jumbotron">
-    <h1 class="display-4">Rellena con tus datos</h1>
-    <p class="lead">No olvides subir tu Demo y si eres de los elegidos nos pondremos en contacto contigo</p>
+    <h1 class="display-4">Envíanos tu información*</h1>
+    <p class="lead">*Todos los datos son necesarios, no olvides adjuntar tu demo hasta el final.</p>
 
     <hr class="my-4">
 
-    <form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate="novalidate">
+    <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+
+        <div class="form-row" [ngClass]="{ 'has-danger': !forma.get('seudonimo').valid }">
+
+            <div class="form-group col-md-4">
+                <label>Seudónimo</label>
+                <input type="text" class="form-control" formControlName="seudonimo" placeholder="Algo asi como tu Alias" required>
+
+                <!--
+                    <div *ngIf="forma.controls['seudonimo'].errors?.required" class="form-control-feedback">
+                    Muy importante
+                </div>
+               -->
+
+            </div>
+
+            <div class="form-group col-md-6">
+
+                <label>Nombre del Programa</label>
+                <input type="text" class="form-control" required placeholder="..." formControlName="programa" minlenght="5" maxlength="100">
+            </div>
+
+            <div class="form-group col-md-2">
+
+                <label># de Participantes</label>
+                <input type="number" class="form-control" formControlName="participantes" placeholder="#" required>
+            </div>
+
+        </div>
+
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control" minlength="4" maxlength="30" formControlName="nombre" required>
-               </div>
-            <div class="form-group col-md-6">
-                <label for="lastname">Apellidos</label>
-                <input type="lastname" class="form-control"  minlength="3" maxlength="30" formControlName="apellidos" placeholder="..." required>
-              </div>
+
+            <div class="form-group col-md-3">
+                <label>Tema en el que se participa</label>
+                <input type="text" class="form-control" required placeholder="¿Cual es la tematica?" formControlName="tema">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Formato Radiofónico</label>
+                <select name="formato" class="form-control" required formControlName="formato">
+                                    <option>...</option>
+                                     <option *ngFor="let formato of formato" [value]="formato.codigo"> {{ formato.nombre }} </option>
+                     </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label>Tipo de Participante</label>
+                <select name="tipopar" class="form-control" required formControlName="tipopar">
+                                     <option>...</option>
+                                     <option *ngFor="let tipopar of tipopar" [value]="tipopar.codigo"> {{ tipopar.nombre }} </option>
+                     </select>
+            </div>
+
+             <div class="form-group col-md-3">
+                <label>Correo Electronico</label>
+                <input type="email" class="form-control" placeholder="Personal o de tu programa" formControlName="CorreoElectronico" required>
+
+            </div>
+           
+
+
+        </div>
+
+        <div class="form-row">
+
+         <div class="form-group col-md-12">
+                <label>Objetivo</label>
+                <textarea type="text" class="form-control" required placeholder="Cuentanos un poco..." minlenght="25" maxlength="600" formControlName="objetivo"></textarea>
+
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-14">
+                <label>Enlista los temas que abordarías los primeros cinco programas:</label>
+                <p></p>
+
+                <tr>
+                <td><input type="text" class="form-control" required placeholder="#1" minlenght="1" maxlength="25" formControlName="caltem1"></td>
+                <td><input type="text" class="form-control" required placeholder="#2" minlenght="1" maxlength="25" formControlName="caltem2"></td>
+                <td><input type="text" class="form-control" required placeholder="#3" minlenght="1" maxlength="25" formControlName="caltem3"></td>
+                <td><input type="text" class="form-control" required placeholder="#4" minlenght="1" maxlength="25" formControlName="caltem4"></td>
+                <td><input type="text" class="form-control" required placeholder="#5" minlenght="1" maxlength="25" formControlName="caltem5"></td>
+                </tr>
+            </div>
+
+
+            <div class="form-group col-md-12">
+                <label>Recursos Técnicos</label>
+                <input type="text" class="form-control size" required placeholder="para la realización del programa" minlenght="0" maxlength="120" formControlName="rectec">
+            </div>
+
+            <div class="form-group col-md-12">
+                <label>Antecedentes</label>
+                <input type="text" class="form-control" required placeholder="En caso de ya haber estado ya al aire a través de emisoras públicas y/o radio en línea" minlenght="0" maxlength="120" formControlName="antecedentes">
+            </div>
+
+
         </div>
 
         <p>
 
         </p>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="mail">Correo Electronico</label>
-                <input type="email" class="form-control" placeholder="@" formControlName="Correo Electronico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
-               
-            </div>
-            <div class="form-group col-md-6">
-                <label for="phone">Teléfono directo</label>
-                <input type="phone" class="form-control" required placeholder="+52" formControlName="Telefono Directo">
-            </div>
-
-
-        </div>
-        <div class="form-group">
-            <label for="address">Dirección</label>
-            <input type="text" class="form-control" required placeholder="1234 Main St" formControlName="Direccion">
-        </div>
-
-        <div class="form-row">
-
-         <div class="form-group col-md-2">
-                <label for="cp">C.P.</label>
-                <input type="zip" class="form-control" required minlenght='5' maxlength="5" formControlName="C.P.">
-            </div>
-        </div>
 
         <div class="input-group">
             <div class="input-group-prepend">
@@ -63,20 +126,16 @@
         <p>
 
         </p>
-
+<div>
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col-md-8">
-            <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
+            <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary" margin-right:auto>
             Enviar
           </button>
         </div>
-
+        </div>
+       {{ forma.valid }}  
+        
 
 
     </form>
-
-    <pre>
-
-    {{ usuario | json }}
-
-</pre>
