@@ -57,19 +57,19 @@
                      </select>
             </div>
 
-             <div class="form-group col-md-3">
+            <div class="form-group col-md-3">
                 <label>Correo Electronico</label>
                 <input type="email" class="form-control" placeholder="Personal o de tu programa" formControlName="CorreoElectronico" required>
 
             </div>
-           
+
 
 
         </div>
 
         <div class="form-row">
 
-         <div class="form-group col-md-12">
+            <div class="form-group col-md-12">
                 <label>Objetivo</label>
                 <textarea type="text" class="form-control" required placeholder="Cuentanos un poco..." minlenght="25" maxlength="600" formControlName="objetivo"></textarea>
 
@@ -83,11 +83,11 @@
                 <p></p>
 
                 <tr>
-                <td><input type="text" class="form-control" required placeholder="#1" minlenght="1" maxlength="25" formControlName="caltem1"></td>
-                <td><input type="text" class="form-control" required placeholder="#2" minlenght="1" maxlength="25" formControlName="caltem2"></td>
-                <td><input type="text" class="form-control" required placeholder="#3" minlenght="1" maxlength="25" formControlName="caltem3"></td>
-                <td><input type="text" class="form-control" required placeholder="#4" minlenght="1" maxlength="25" formControlName="caltem4"></td>
-                <td><input type="text" class="form-control" required placeholder="#5" minlenght="1" maxlength="25" formControlName="caltem5"></td>
+                    <td><input type="text" class="form-control" required placeholder="#1" minlenght="1" maxlength="25" formControlName="caltem1"></td>
+                    <td><input type="text" class="form-control" required placeholder="#2" minlenght="1" maxlength="25" formControlName="caltem2"></td>
+                    <td><input type="text" class="form-control" required placeholder="#3" minlenght="1" maxlength="25" formControlName="caltem3"></td>
+                    <td><input type="text" class="form-control" required placeholder="#4" minlenght="1" maxlength="25" formControlName="caltem4"></td>
+                    <td><input type="text" class="form-control" required placeholder="#5" minlenght="1" maxlength="25" formControlName="caltem5"></td>
                 </tr>
             </div>
 
@@ -109,7 +109,7 @@
 
         </p>
 
-        <div class="input-group">
+        <!-- <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupFileAddon01">Archivo de Audio<i class="fa fa-audio-description" aria-hidden="true"></i></span>
             </div>
@@ -117,25 +117,66 @@
             <p>
                 <p>
 
-                    <div class="custom-file">
+                    
+                        <div class="custom-file">
                         <input type="file" class="custom-file-input" id="audio" aria-describedby="inputGroupFileAddon01">
                         <label class="custom-file-label" for="inputGroupFile01">MP3 / WAV </label>
                     </div>
-        </div>
+                   
+        </div> -->
 
         <p>
 
         </p>
-<div>
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-md-8">
-            <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary" margin-right:auto>
+        <div>
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary" margin-right:auto>
             Enviar
           </button>
+            </div>
         </div>
+
+        <div class=row>
+            <div class="col-md-4">
+                <h3>ARCHIVO</h3>
+                <div appNgDropFiles (mouseSobre)="estaSobre = $event" [ngClass]="{ 'file-over': Drop }" class="well drop-zone">
+                    <h4>Arrastra tu Demo aquí:</h4>
+                    <img src="assets/img/drop-images.png">
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <H4>Cargar Archivo</H4>
+
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tamaño</th>
+                            <th>Progreso</th>
+                        </tr>
+                        <td>XYZ</td>
+                        <td>20MB</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%"></div>
+                            </div>
+                        </td>
+                    </thead>
+                </table>
+            </div>
+            <p></p>
+            <button (click)='cargardemo()' [disabled]='archivos.length === 0' class="btn btn-success center">Subir</button>
+            <button class="btn btn-danger center">Limpiar</button>
+
         </div>
-       {{ forma.valid }}  
-        
+
+
+
+
+        {{ forma.valid }}
+
 
 
     </form>
